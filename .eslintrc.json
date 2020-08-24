@@ -1,0 +1,58 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "blockBindings": true
+    },
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "max-len": ["error", { "code": 100 }],
+    "no-param-reassign": ["error", { "props": false }],
+    "react/prop-types": 0,
+    "no-var": 2,
+    "prefer-const": 2,
+    "no-unused-vars": [2, {
+      "vars": "local",
+      "args": "after-used"
+    }],
+    "no-use-before-define": 2,
+    "no-redeclare": 2,
+    "no-proto": 2,
+    "no-invalid-regexp": 2,
+    "camelcase": [2, {
+      "properties": "never"
+    }],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  }
+}

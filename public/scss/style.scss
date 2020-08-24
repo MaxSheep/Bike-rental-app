@@ -1,0 +1,78 @@
+html {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+body {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    right: 0;
+    float: left;
+    margin: 0;
+    font-family: "Libre Franklin", sans-serif;
+}
+
+main {
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+p {
+    font-family: "Roboto Slab", serif;
+    font-size: 18px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+        color: black;
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.text-field {
+    padding: 2px;
+}
+
+.required-field {
+    border-color: red;
+    outline-color: red;
+}
+
+.error-text {
+    color: red;
+}
+.error-text.error-text-center {
+    text-align: center;
+}
+
+p.error-text {
+    text-align: left;
+    margin: 0 0 0 0.5rem;
+    font-style: italic;
+    font-family: "Libre Franklin", sans-serif;
+}
+
+.bikes-section {
+    padding: 2rem 0;
+}
