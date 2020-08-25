@@ -4,10 +4,6 @@ const createNewBike = (bike) => {
     return bikesDBOps.createNewBike(bike);
 };
 
-const updateBike = (bike) => {
-    return bikesDBOps.updateBike(bike);
-};
-
 const updateBikeRent = (model) => {
     return bikesDBOps.updateBikeRent(model);
 };
@@ -26,7 +22,6 @@ const getBikeById = (id) => {
 
 module.exports = {
     createNewBike,
-    updateBike,
     updateBikeRent,
     removeBike,
     getBikes,

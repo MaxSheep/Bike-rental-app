@@ -25,38 +25,40 @@ const BikeType = observer(() => {
 
     return (
         <div className="input-field-wrap">
-            <label className="field-label select-label" htmlFor="bike-type-select">
-                Bike type <span className="error-text">*</span>
-                <select
-                    id="bike-type-select"
-                    name="type"
-                    value={bikesStore.bikeFields.type}
-                    className={`select-field ${
-                        !changed
-                            ? bikesStore.userError &&
-                              bikesStore.userError.messages &&
-                              bikesStore.userError.messages.type &&
-                              "required-field"
-                            : ""
-                    }`}
-                    onChange={handleTypeChange}
-                >
-                    <option hidden disabled value="">
-                        Select the bike type.
+            <label className="input-label" htmlFor="bike-type-select">
+                Bike type{" "}
+            </label>
+            <select
+                id="bike-type-select"
+                name="type"
+                value={bikesStore.bikeFields.type}
+                className={`select-field ${
+                    !changed
+                        ? bikesStore.userError &&
+                          bikesStore.userError.messages &&
+                          bikesStore.userError.messages.type &&
+                          "required-field"
+                        : ""
+                }`}
+                onChange={handleTypeChange}
+            >
+                <option hidden disabled value="">
+                    Select the bike type.
+                </option>
+                {Object.entries(bikeTypeConstants).map(([key, value]) => (
+                    <option key={value} value={value}>
+                        {key}
                     </option>
-                    {Object.entries(bikeTypeConstants).map(([key, value]) => (
-                        <option key={value} value={value}>
-                            {key}
-                        </option>
-                    ))}
-                </select>
+                ))}
+            </select>
+            <div className="error-text-anchor">
                 {!changed &&
                     bikesStore.userError &&
                     bikesStore.userError.messages &&
                     bikesStore.userError.messages.type && (
                         <p className="error-text">{bikesStore.userError.messages.type}</p>
                     )}
-            </label>
+            </div>
         </div>
     );
 });

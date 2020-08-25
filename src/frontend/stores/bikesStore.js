@@ -3,6 +3,8 @@ import BikesService from "../services/bikesService";
 import currencyFormatter from "../../tools/currencyFormatter";
 import Bike from "../models/Bike";
 
+const defaultBikeFields = { name: "", type: "", price: "" };
+
 export default class BikesStore {
     constructor() {
         this.bikesService = new BikesService();
@@ -68,6 +70,10 @@ export default class BikesStore {
         this.serverError = null;
     };
 
+    @action resetFields = () => {
+        this.bikeFields = defaultBikeFields;
+    };
+
     @action
     resetServerError = () => {
         this.serverError = null;
@@ -77,7 +83,6 @@ export default class BikesStore {
     getBikes = async () => {
         this.loading = true;
         this.bikes = [];
-        this.userError = null;
         this.serverError = null;
         try {
             const res = await this.bikesService.get();
@@ -99,7 +104,6 @@ export default class BikesStore {
         const selectedId = event.target.value;
         this.status = "initial";
         this.serverError = null;
-        this.userError = null;
         try {
             const res = await this.bikesService.postRent(selectedId);
             if (res.status === 201) {
@@ -126,10 +130,18 @@ export default class BikesStore {
         this.status = "initial";
         this.serverError = null;
         try {
-            await this.bikesService.cancelRent(selectedId);
+            const res = await this.bikesService.cancelRent(selectedId);
             runInAction(() => {
-                this.getBikes();
                 this.status = "success";
+                const foundBikeIndex = this.findBikeById(selectedId);
+                this.bikes[foundBikeIndex].isRented = false;
+                if (
+                    res.data.rentedTime > 20 &&
+                    this.bikes[foundBikeIndex].rentedTime <= 20
+                ) {
+                    this.bikes[foundBikeIndex].price /= 2;
+                    this.bikes[foundBikeIndex].rentedTime = res.data.rentedTime;
+                }
             });
         } catch (e) {
             runInAction(() => {
@@ -143,7 +155,6 @@ export default class BikesStore {
     updateBike = async (event, bike) => {
         this.status = "initial";
         this.serverError = null;
-        this.userError = null;
         const model = {
             id: bike.id,
             name: bike.name,

@@ -38,20 +38,8 @@ bikesRouter.post("/:bikeId", async (req, res, next) => {
             ...(await calculateRentedTimeAndDate(validated.isRented, validated.id)),
             ...validated,
         };
-        const bike = await bikesService.updateBikeRent(model);
-        res.status(201).json(bike);
-    } catch (e) {
-        next(e);
-    }
-});
-
-bikesRouter.patch("/:bikeId", async (req, res, next) => {
-    try {
-        const validated = await validate.bikeNew.validate(req.body, {
-            abortEarly: false,
-        });
-        await bikesService.updateBike(validated);
-        res.sendStatus(200).end();
+        await bikesService.updateBikeRent(model);
+        res.status(201).json(model);
     } catch (e) {
         next(e);
     }

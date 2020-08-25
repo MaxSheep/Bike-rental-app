@@ -5,7 +5,7 @@ import Remove from "../buttons/Remove";
 const RentedBike = observer(({ bike, handleRemove }) => {
     return (
         <div className="bike-container">
-            <p>
+            <p className="bike-info">
                 {bike.name} / {bike.formattedBikeType} / {bike.formattedBikePrice}
             </p>
             <div className="btns-container">

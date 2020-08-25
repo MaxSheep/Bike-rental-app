@@ -8,7 +8,7 @@ This is a web application, that can be used to rent a bike or put yours up for r
 - PostgreSQL (https://www.postgresql.org/)
 
 ### 3. Setup & Build:
-- Load PostgreSQL dump file located in "~/Bike-rental-app/dumps".
+- Load PostgreSQL dump file located in "*~/Bike-rental-app/dumps*".
 
 > Example on how to load dump using DBeaver:
 > 1. Create a new PostgreSQL connection.

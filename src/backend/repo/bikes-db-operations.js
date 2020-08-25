@@ -17,17 +17,6 @@ const createNewBike = async ({ name, type, price, rentedDate }) => {
     }
 };
 
-const updateBike = async ({ id, name, type, price }) => {
-    try {
-        const query = await Bike.query().findById(id).patch({ name, type, price });
-        logger.emit("success", `bike was updated, id: ${id}`);
-        return query;
-    } catch (e) {
-        logger.emit("error", e);
-        throw e;
-    }
-};
-
 const updateBikeRent = async ({ id, isRented, rentedDate, rentedTime }) => {
     try {
         const query = await Bike.query().findById(id).patch({
@@ -75,7 +64,6 @@ const getBikeById = async (id) => {
 
 module.exports = {
     createNewBike,
-    updateBike,
     updateBikeRent,
     removeBike,
     getBikes,

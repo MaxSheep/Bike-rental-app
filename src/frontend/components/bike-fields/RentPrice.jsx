@@ -23,32 +23,36 @@ const RentPrice = observer(() => {
     }, [bikesStore.userError]);
 
     return (
-        <div className="input-field-wrap">
-            <label htmlFor="r-price-input">
-                Rent price <span className="error-text">*</span>
-                <input
-                    className={`text-field ${
-                        !changed
-                            ? bikesStore.userError &&
-                              bikesStore.userError.messages &&
-                              bikesStore.userError.messages.price &&
-                              "required-field"
-                            : ""
-                    }`}
-                    type="text"
-                    placeholder="Enter rent price"
-                    name="price"
-                    onChange={handlePriceChange}
-                    value={bikesStore.bikeFields.price}
-                    id="r-price-input"
-                />
+        <div className="input-field-wrap rent-price-field-wrap">
+            <label className="input-label" htmlFor="r-price-input">
+                Rent price{" "}
             </label>
-            {!changed &&
-                bikesStore.userError &&
-                bikesStore.userError.messages &&
-                bikesStore.userError.messages.price && (
-                    <p className="error-text">{bikesStore.userError.messages.price}</p>
-                )}{" "}
+            <input
+                className={`text-field ${
+                    !changed
+                        ? bikesStore.userError &&
+                          bikesStore.userError.messages &&
+                          bikesStore.userError.messages.price &&
+                          "required-field"
+                        : ""
+                }`}
+                type="text"
+                placeholder="Enter rent price"
+                name="price"
+                onChange={handlePriceChange}
+                value={bikesStore.bikeFields.price}
+                id="r-price-input"
+            />
+            <div className="error-text-anchor">
+                {!changed &&
+                    bikesStore.userError &&
+                    bikesStore.userError.messages &&
+                    bikesStore.userError.messages.price && (
+                        <p className="error-text">
+                            {bikesStore.userError.messages.price}
+                        </p>
+                    )}{" "}
+            </div>
         </div>
     );
 });
