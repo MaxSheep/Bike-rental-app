@@ -126,7 +126,6 @@ p.error-text {
 
     .section-header {
         text-align: left;
-
     }
 
     &.create-new-rent-section {
@@ -143,7 +142,7 @@ p.error-text {
             }
 
             .error-text {
-                position: absolute;
+                position: relative;
             }
 
             .input-field-wrap {
@@ -185,7 +184,8 @@ p.error-text {
             }
 
             .btn.submit {
-                align-self: flex-end;
+                align-self: flex-start;
+                margin-top: 25px;
                 background-color: #23B999;
             }
         }
@@ -270,6 +270,7 @@ p.error-text {
             }
 
             .btn.submit {
+                align-self: flex-end;
                 margin-top: .5rem;
             }
         }
